@@ -17,11 +17,29 @@ const Login = () => {
 
   const { error, username, password } = formValues
 
+  // const login = () => {
+  //   axios.post("http://localhost:5000/api/login", {username: username, password: password})
+  //   .then(res => {
+  //     localStorage.setItem("token", res.data.payload)
+  //   })
+  // }
+
   const login = () => {
-    axios.post("http://localhost:5000/api/login", {username: username, password: password})
+    if( username === "" || password === "") {
+      setFormValues({
+        ...formValues,
+        error: "Username or Password not valid."
+      })
+    } 
+    else {
+      axios.post("http://localhost:5000/api/login", {username: username, password: password})
     .then(res => {
       localStorage.setItem("token", res.data.payload)
     })
+    }
+
+
+    
   }
 
   const handleChange = (e) => {
