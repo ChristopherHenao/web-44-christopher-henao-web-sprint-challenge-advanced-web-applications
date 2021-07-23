@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import { useHistory } from "react-router";
 
 const Login = () => {
   // make a post request to retrieve a token from the api
@@ -48,7 +49,7 @@ const Login = () => {
           <label>Password: </label>
           <input id="password" type="text" name="password" onChange={handleChange} value={password}/>
 
-          <button id="error">Submit</button>
+          <button id="submit">Submit</button>
         </form>      
       </div>
 
