@@ -17,6 +17,8 @@ const Login = () => {
 
   const { error, username, password } = formValues
 
+  const { push } = useHistory()
+
   // const login = () => {
   //   axios.post("http://localhost:5000/api/login", {username: username, password: password})
   //   .then(res => {
@@ -35,11 +37,13 @@ const Login = () => {
       axios.post("http://localhost:5000/api/login", {username: username, password: password})
     .then(res => {
       localStorage.setItem("token", res.data.payload)
+      push('/bubble-page')
+    })
+    .catch(err => {
+      console.log(err)
     })
     }
 
-
-    
   }
 
   const handleChange = (e) => {
